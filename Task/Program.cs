@@ -9,13 +9,46 @@
 // [“Russia”, “Denmark”, “Kazan”] → []
 
 //Задаем массив
-string[] strArray = {"Hello", "2", "world", ":-)"};
+string[] strArray = {"Hello", "2", "world", ":-)", "4"};
 
-string[] ThreeCharSort(string arr){
-    string[] resArray = new string[0];
+//
+string[] userResArr = ThreeCharSort(strArray);
+PrintResArr(userResArr);
+
+
+//метод формирует новый массив из строк, 
+// длина которых меньше, либо равна 3 символам
+string[] ThreeCharSort(string[] arr){
+    int count = 0;
+    int resCount = 0;
+    //считаем количество элементов не длиннее 3
     for (int i = 0; i < arr.Length; i++)
     {
-        Console.WriteLine(arr[i].Length);
+        if (arr[i].Length <= 3)
+        {
+            count++;
+        }
+
     }
+    string[] resArray = new string[count];
+    //заполняем массив уже известной длины
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i].Length <= 3)
+        {
+            resArray[resCount] = arr[i];
+            resCount++;
+        }
+
+    }
+    return resArray;
 }
 
+//печатаем массив
+void PrintResArr(string[] resArr)
+{
+    for (int i = 0; i < resArr.Length; i++)
+    {
+        Console.Write(resArr[i] + " ");
+    }
+}
